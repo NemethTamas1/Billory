@@ -1,13 +1,9 @@
 import BaseLayout from "../layouts/BaseLayout";
 
-function Test() {
+export default function Clients() {
   return (
     <BaseLayout>
-      <div>
-        <h1>MainPage</h1>
-      </div>
+      <div>Vevők</div>
     </BaseLayout>
   );
 }
-
-export default Test;

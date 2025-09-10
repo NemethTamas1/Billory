@@ -1,13 +1,9 @@
 import BaseLayout from "../layouts/BaseLayout";
 
-function Test() {
+export default function Financials() {
   return (
     <BaseLayout>
-      <div>
-        <h1>MainPage</h1>
-      </div>
+      <div>Kimutatások</div>
     </BaseLayout>
   );
 }
-
-export default Test;

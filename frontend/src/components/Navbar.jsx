@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 function Navbar() {
   const handleMyProfileClick = () => {
     alert("Profilom");
@@ -10,69 +12,71 @@ function Navbar() {
   const handleInvoiceClick = () => {
     alert("Számla");
   };
-  
+
   const handleMonitoringClick = () => {
     alert("Kimutatások");
-  }
+  };
 
   const handleProductsClick = () => {
     alert("Termékek");
-  }
+  };
 
   const handleClientsClick = () => {
     alert("Vevők");
-  }
+  };
 
   return (
     <div className="w-full bg-gray-300 border-b-2 border-black flex justify-between items-center px-3">
       {/* Logó */}
-      <button
-        className="p-3 text-2xl text-black font-bold"
-        onClick={handleMainPageClick}
-      >
+      <NavLink to="/" className="p-3 text-2xl text-black font-bold" end>
         Billory
-      </button>
+      </NavLink>
 
       {/* Számla */}
       <div className="ml-auto flex gap-3">
-        <button
+        <NavLink
+          to="/invoices"
           className="p-3 text-2xl text-black font-bold"
-          onClick={handleInvoiceClick}
+          end
         >
           Számla
-        </button>
+        </NavLink>
 
         {/* Profilom */}
-        <button
-          className="p-3 text-2xl text-black font-bold"
-          onClick={handleMyProfileClick}
+        <NavLink
+          to="/myProfile"
+          className="p-3 text-2xl text-red-400 font-bold"
+          end
         >
           Profilom
-        </button>
+        </NavLink>
 
         {/* Kimutatások */}
-        <button
+        <NavLink
+          to="/financials"
           className="p-3 text-2xl text-black font-bold"
-          onClick={handleMonitoringClick}
+          end
         >
           Kimutatások
-        </button>
+        </NavLink>
 
         {/* Termékek */}
-        <button
+        <NavLink
+          to="/products"
           className="p-3 text-2xl text-black font-bold"
-          onClick={handleProductsClick}
+          end
         >
           Termékek
-        </button>
+        </NavLink>
 
         {/* Vevők */}
-        <button
+        <NavLink
+          to="/clients"
           className="p-3 text-2xl text-black font-bold"
-          onClick={handleClientsClick}
+          end
         >
           Vevők
-        </button>
+        </NavLink>
       </div>
     </div>
   );
