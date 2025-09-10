@@ -5,6 +5,7 @@ import Invoices from "../pages/Invoices.jsx";
 import Products from "../pages/Products.jsx";
 import MainPage from "../pages/MainPage.jsx";
 import PageNotFound from "../pages/PageNotFound.jsx";
+import MyProfile from "../pages/MyProfile.jsx";
 
 const router = createBrowserRouter([
     {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
     {
         path: '/invoices',
         element: <Invoices />
+    },
+    {
+        path: '/myProfile',
+        element: <MyProfile />
     },
     {
         path: '/products',

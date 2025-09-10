@@ -4,7 +4,7 @@ function Test() {
   return (
     <BaseLayout>
       <div>
-        <h1>MainPage</h1>
+        <h1>Üdvözlünk a Billory-ban!</h1>
       </div>
     </BaseLayout>
   );

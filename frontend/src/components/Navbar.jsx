@@ -45,7 +45,7 @@ function Navbar() {
         {/* Profilom */}
         <NavLink
           to="/myProfile"
-          className="p-3 text-2xl text-red-400 font-bold"
+          className="p-3 text-2xl text-black font-bold"
           end
         >
           Profilom
