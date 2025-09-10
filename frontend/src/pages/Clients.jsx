@@ -4,6 +4,10 @@ export default function Clients() {
   return (
     <BaseLayout>
       <div>Vevők</div>
+
+      <div>
+        
+      </div>
     </BaseLayout>
   );
 }
