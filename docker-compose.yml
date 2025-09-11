@@ -12,8 +12,6 @@ services:
       - APP_ENV=local
       - APP_DEBUG=true
       - DB_CONNECTION=sqlite
-    depends_on:
-      - db
 
   frontend:
     build:
@@ -30,9 +28,3 @@ services:
     environment:
       - CHOKIDAR_USEPOLLING=true
     command: npm run dev -- --host 0.0.0.0
-
-  db:
-    image: nouchka/sqlite3
-    container_name: sqlite-db
-    volumes:
-      - ./backend/database:/data
