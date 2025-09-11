@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-cd /var/www/html
+cd /app/var/www/html
 
 echo "Ensuring SQLite database file exists..."
 mkdir -p database
@@ -11,6 +11,9 @@ if [ ! -d vendor ]; then
     echo "Vendor directory missing, running composer install..."
     composer install --no-interaction --prefer-dist --optimize-autoloader
 fi
+
+echo "Running database migrations..."
+php artisan migrate --force
 
 echo "Clearing Laravel caches..."
 php artisan config:clear
