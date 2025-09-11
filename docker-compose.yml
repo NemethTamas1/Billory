@@ -7,11 +7,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./backend/app:/var/www/html/app
-      - ./backend/routes:/var/www/html/routes
-      - ./backend/config:/var/www/html/config
-      - ./backend/resources:/var/www/html/resources
-      - ./backend/database:/var/www/html/database
+      - ./backend/app:/var/www/html
     environment:
       - APP_ENV=local
       - APP_DEBUG=true

@@ -16,7 +16,7 @@ COPY . .
 
 RUN composer install
 
-RUN mkdir -p database && [ -f database/database.sqlite ] || touch database/database.sqlite
+#RUN mkdir -p database && [ -f database/database.sqlite ] || touch database/database.sqlite
 
 # RUN php artisan config:clear && php artisan route:clear && php artisan cache:clear
 
