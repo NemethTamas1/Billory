@@ -16,13 +16,8 @@ COPY . .
 
 RUN composer install
 
-#RUN mkdir -p database && [ -f database/database.sqlite ] || touch database/database.sqlite
-
-# RUN php artisan config:clear && php artisan route:clear && php artisan cache:clear
-
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
-
 
 EXPOSE 8000
 
