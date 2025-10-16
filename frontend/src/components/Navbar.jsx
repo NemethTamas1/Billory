@@ -26,9 +26,9 @@ function Navbar() {
   };
 
   return (
-    <div className="w-full bg-gray-300 border-b-2 border-black flex justify-between items-center px-3">
+    <div className="w-full bg-gray-900 flex justify-between items-center px-3">
       {/* Logó */}
-      <NavLink to="/" className="p-3 text-2xl text-black font-bold" end>
+      <NavLink to="/" className="p-3 text-4xl text-white font-bold" end>
         Billory
       </NavLink>
 
@@ -36,7 +36,7 @@ function Navbar() {
       <div className="ml-auto flex gap-3">
         <NavLink
           to="/invoices"
-          className="p-3 text-2xl text-black font-bold"
+          className="p-3 text-2xl text-white font-bold"
           end
         >
           Számla
@@ -54,7 +54,7 @@ function Navbar() {
         {/* Kimutatások */}
         <NavLink
           to="/financials"
-          className="p-3 text-2xl text-black font-bold"
+          className="p-3 text-2xl text-white font-bold"
           end
         >
           Kimutatások
@@ -63,7 +63,7 @@ function Navbar() {
         {/* Termékek */}
         <NavLink
           to="/products"
-          className="p-3 text-2xl text-black font-bold"
+          className="p-3 text-2xl text-white font-bold"
           end
         >
           Termékek
@@ -72,7 +72,7 @@ function Navbar() {
         {/* Vevők */}
         <NavLink
           to="/clients"
-          className="p-3 text-2xl text-black font-bold"
+          className="p-3 text-2xl text-white font-bold"
           end
         >
           Vevők

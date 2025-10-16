@@ -1,0 +1,90 @@
+networks:
+  fullstack:
+
+services:
+  proxy:
+    image: nginx:1.26-alpine3.19
+    depends_on:
+      - db
+      - backend
+      - frontend
+    ports:
+      - 80:80
+    networks:
+      - fullstack
+    volumes:
+      #- ./proxy/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./proxy/conf.d:/etc/nginx/conf.d:ro
+      #- ./backend:/www:rw
+
+
+  db:
+    image: mysql:8.0.37
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: mysql-db
+    environment:
+      - MYSQL_ROOT_PASSWORD=${BILLORY_ROOT_PASSWORD}
+      - MYSQL_DATABASE=Billory
+      - MYSQL_USER=BilloryUser
+      - MYSQL_PASSWORD=${BILLORY_USER_PASSWORD}
+    volumes:
+      - "mysql-data:/var/lib/mysql:rw"
+    networks:
+      - fullstack
+    
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: laravel-backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      APP_ENV: local
+      APP_DEBUG: 'true'
+      DB_CONNECTION: mysql
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: Billory
+      DB_USERNAME: Billory_user
+      DB_PASSWORD: Billory_pass
+    volumes:
+      - ./backend:/www:rw
+      - ./backend/php.ini:/usr/local/etc/php/conf.d/php.ini:ro
+      #- ./backend/.env:/www/backend/.env:rw
+    networks:
+      - fullstack
+
+  phpmyadmin:
+    image: phpmyadmin:5.2.0
+    depends_on:
+      - db
+    environment:
+      - PMA_HOST=db
+      - PMA_PORT=3306
+      - PMA_USER_ABSOLUTE_URI=${PMA_ABSOLUTE_URI}
+      - UPLOAD_LIMIT=300M
+    networks:
+      - fullstack 
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: react-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    networks:
+      - fullstack
+
+volumes:
+  mysql-data:
