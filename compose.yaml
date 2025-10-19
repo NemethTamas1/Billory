@@ -4,6 +4,7 @@ networks:
 services:
   proxy:
     image: nginx:1.26-alpine3.19
+    container_name: proxy-server
     depends_on:
       - db
       - backend
@@ -23,12 +24,16 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     container_name: mysql-db
     environment:
-      - MYSQL_ROOT_PASSWORD=${BILLORY_ROOT_PASSWORD}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=BilloryAdmin
       - MYSQL_DATABASE=Billory
-      - MYSQL_USER=BilloryUser
-      - MYSQL_PASSWORD=${BILLORY_USER_PASSWORD}
+      - TZ=${TZ}
+    ports:
+      - "3306:3306"
     volumes:
       - "mysql-data:/var/lib/mysql:rw"
+      - ./backend/init:/docker-entrypoint-initdb.d:ro
     networks:
       - fullstack
     
@@ -42,19 +47,9 @@ services:
       - "8000:8000"
     depends_on:
       - db
-    environment:
-      APP_ENV: local
-      APP_DEBUG: 'true'
-      DB_CONNECTION: mysql
-      DB_HOST: db
-      DB_PORT: 3306
-      DB_DATABASE: Billory
-      DB_USERNAME: Billory_user
-      DB_PASSWORD: Billory_pass
     volumes:
       - ./backend:/www:rw
       - ./backend/php.ini:/usr/local/etc/php/conf.d/php.ini:ro
-      #- ./backend/.env:/www/backend/.env:rw
     networks:
       - fullstack
 
@@ -65,7 +60,9 @@ services:
     environment:
       - PMA_HOST=db
       - PMA_PORT=3306
-      - PMA_USER_ABSOLUTE_URI=${PMA_ABSOLUTE_URI}
+      - PMA_USER=root
+      - PMA_PASSWORD=${DB_PASSWORD}
+      - PMA_ABSOLUTE_URI=${PMA_ABSOLUTE_URI}
       - UPLOAD_LIMIT=300M
     networks:
       - fullstack 

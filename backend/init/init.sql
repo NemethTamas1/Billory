@@ -1,0 +1,4 @@
+CREATE USER IF NOT EXISTS 'BilloryAdmin'@'%'
+IDENTIFIED WITH 'root';
+
+GRANT ALL PRIVILEGES ON *.* TO 'BilloryAdmin'@'%';

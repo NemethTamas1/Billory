@@ -9,6 +9,7 @@ RUN apk add --no-cache \
     git \
     curl \
     sqlite-dev \
+    mariadb-connector-c-dev \
     netcat-openbsd \
     && docker-php-ext-install pdo pdo_mysql pdo_sqlite \
     && rm -rf /var/cache/apk/*
