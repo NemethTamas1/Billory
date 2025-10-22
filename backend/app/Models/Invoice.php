@@ -17,4 +17,23 @@ class Invoice extends Model
         "net_total_amount",
         "gross_total_amount"
     ];
+
+    public function items():HasMany
+    {
+        return $this->hasMany(Item::class);
+    }
+
+    public function calculateTotals()
+    {
+        $net = $this->items->sum(function($item) {
+            return $item->price * $item->quantity;
+        });
+
+        $gross = $net * 1.27;
+
+        $this->update([
+            "net_total_amount" => $net,
+            "gross_total_amount" => $gross
+        ]);
+    }
 }
