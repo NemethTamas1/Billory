@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreItemRequest;
 use App\Http\Requests\UpdateItemRequest;
+use App\Http\Resources\ItemResource;
 use App\Models\Item;
 
 class ItemController extends Controller
@@ -13,7 +14,9 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //
+        $data = Item::all();
+
+        return ItemResource::collection($data);
     }
 
     /**

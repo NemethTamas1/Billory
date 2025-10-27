@@ -13,12 +13,16 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("invoice_id")->constrained("invoices")->cascadeOnDelete();
+            $table->foreignId("offer_id")->constrained("offers")->cascadeOnDelete();
 
             $table->string("name", 100);
-            $table->decimal("price", 10, 2);
+            $table->text("description")->nullable();
             $table->integer("quantity")->default(1);
             $table->string("quantity_type", 15);
+            $table->integer("unit_price_net");
+            $table->integer("tax_percent")->default(27);
+            $table->integer("total_net");
+            $table->integer("total_gross");
             $table->timestamps();
         });
     }

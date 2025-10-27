@@ -5,17 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Invoice extends Model
+class Offer extends Model
 {
     public $timestamps = true;
 
-    public $table = "invoices";
+    public $table = "offers";
 
     protected $fillable = [
-        "invoice_number",
+        "offer_number",
         "customer_id",
+        "status",
+        "valid_until",
+        "currency",
         "net_total_amount",
-        "gross_total_amount"
+        "gross_total_amount",
+        "tax_percent",
+        "notes",
+        "items"
     ];
 
     public function items():HasMany

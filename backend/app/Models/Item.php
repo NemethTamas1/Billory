@@ -13,15 +13,20 @@ class Item extends Model
     public $table = 'items';
 
     protected $fillable = [
-        'invoice_id',
+        'offer_id',
         'name',
-        'price',
+        "description",
         'quantity',
-        'quantity_type'
+        'quantity_type',
+        "unit_price_net",
+        "tax_percent",
+        'total_net',
+        'total_gross',
+        'price',
     ];
 
-    public function invoice():BelongsTo
+    public function offer():BelongsTo
     {
-        return $this->belongsTo(Invoice::class);
+        return $this->belongsTo(Offer::class);
     }
 }

@@ -30,6 +30,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: BilloryAdmin
       MYSQL_DATABASE: Billory
+      DB_HOST: ${DB_HOST}
       TZ: ${TZ}
     ports:
       - "3306:3306"

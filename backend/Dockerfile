@@ -11,6 +11,7 @@ RUN apk add --no-cache \
     sqlite-dev \
     mariadb-connector-c-dev \
     netcat-openbsd \
+    mysql-client \
     && docker-php-ext-install pdo pdo_mysql pdo_sqlite \
     && rm -rf /var/cache/apk/*
 
