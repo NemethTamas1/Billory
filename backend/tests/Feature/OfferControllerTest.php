@@ -11,6 +11,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class OfferControllerTest extends TestCase
 {
+    //test
     use DatabaseTransactions;
 
     public function test_offers_endpoint_can_be_reached(): void
