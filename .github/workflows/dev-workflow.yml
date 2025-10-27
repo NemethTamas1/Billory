@@ -57,7 +57,8 @@ jobs:
         DB_DATABASE: ${{ secrets.DB_DATABASE }}
         DB_USERNAME: ${{ secrets.DB_USERNAME }}
         DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-      run: php artisan migrate --force
+      run: php artisan migrate:fresh --force
+
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       working-directory: backend
       env:
