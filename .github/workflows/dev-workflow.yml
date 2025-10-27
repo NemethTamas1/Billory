@@ -37,6 +37,9 @@ jobs:
       working-directory: backend
       run: composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
+    - name: Copy root .env to backend
+      run: cp .env backend/.env
+
     - name: Generate key
       working-directory: backend
       run: php artisan key:generate
