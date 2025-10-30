@@ -28,8 +28,8 @@ services:
     environment:
       MYSQL_PASSWORD: ${DB_PASSWORD}
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: BilloryAdmin
-      MYSQL_DATABASE: Billory
+      MYSQL_USER: QuotivaAdmin
+      MYSQL_DATABASE: Quotiva
       DB_HOST: ${DB_HOST}
       TZ: ${TZ}
     ports:

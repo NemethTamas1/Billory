@@ -12,6 +12,6 @@ export default defineConfig({
   server:{
     host: true,
     port: 3000,
-    allowedHosts: ['frontend.billory']
+    allowedHosts: ['frontend.quotiva']
   }
 })
