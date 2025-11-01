@@ -3,7 +3,7 @@
 ## Adatbázis migráció Turso Cloud-ra
 1. MySQL migrációk és esetleges seederek lefuttatása.
 
-2. MySQL típusú sql fájlt SQLite-ra alakítjuk:
+2. Kinyerjük a jelenlegi mysql migrációk sql fájlját:
     - Belépünk az adatbázis konténerbe: `docker compose exec db sh`
     - Kiadjuk a következő parancsot: `mysqldump -u QuotivaAdmin -P 3306 -h db -p --no-data Quotiva > quotiva_dump.sql`
 
