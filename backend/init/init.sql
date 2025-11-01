@@ -1,4 +1,4 @@
-CREATE USER IF NOT EXISTS 'BilloryAdmin'@'%'
+CREATE USER IF NOT EXISTS 'QuotivaAdmin'@'%'
 IDENTIFIED WITH 'root';
 
-GRANT ALL PRIVILEGES ON *.* TO 'BilloryAdmin'@'%';
+GRANT ALL PRIVILEGES ON *.* TO 'QuotivaAdmin'@'%';
